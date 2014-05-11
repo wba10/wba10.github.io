@@ -1,0 +1,10 @@
+# Site settings
+title: World Business Agency
+email: fabio@wba10.com
+description: "WBA is an International Business Agency, bringing business in all contries, mainly Brazil - Middle East relationship."
+baseurl: ""
+url: "http://wba10.com"
+
+# Build settings
+markdown: kramdown
+permalink: pretty

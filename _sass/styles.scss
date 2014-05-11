@@ -1,0 +1,222 @@
+// customize bootstrap variables here:
+@import "variables";
+@import "bootstrap";
+@import "compass/css3/images";
+@import "compass/css3/background-size";
+
+@font-face {
+  font-family: 'Charlemagne Std Bold';
+  src: font-url('charlemagne_std_bold.eot');
+  src: font-url('charlemagne_std_bold.eot?#iefix') format('embedded-opentype'),
+  font-url('charlemagne_std_bold.svg#Charlemagne Std Bold') format('svg'),
+  font-url('charlemagne_std_bold.woff') format('woff'),
+  font-url('charlemagne_std_bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$green: #282;
+$pale-green: #4a8827;
+$light-red: #c42;
+$dark-red: darken($light-red, 10%);
+$orange: #fa1;
+$blue: #09f;
+
+$contents: objectives commodities sportive-talents events divulgation environmental-projects contact;
+$colors: $green $light-red $orange $green $blue $green $orange;
+
+body {
+  background: #424542;
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.container {
+  background: #fff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+figure#logo {
+  text-align: center;
+}
+
+hr.fade-line {
+  margin: 25px 30px;
+  height: 1px;
+  background-color: #eee;
+  @include background-image(linear-gradient(left, white, #ccc 50%, white));
+}
+
+header {
+  text-align: center;
+}
+
+nav.language-chooser {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+    }
+  }
+}
+
+.title-image {
+  float: right;
+  border: 1px solid #eee;
+  padding: 3px;
+  background: #fff;
+  margin-top: -85px;
+  margin-left: 10px;
+  margin-right: -5px;
+  
+  @include box-shadow(2px 2px 2px rgba(0, 0, 0, .5));
+
+  @media (max-width: 767px) {
+    float: none;
+    margin: 10px;
+    width: 269px;
+  }
+}
+
+.pull-left {
+  @media (max-width: 767px) {
+    float: none !important;
+  }
+}
+
+section {
+  margin: 20px;
+  padding: 20px;
+
+  h1 {
+    font-family: 'Charlemagne Std Bold', serif;
+    font-size: 32px;
+    margin: 0;
+    margin: 0 -20px 10px;
+    padding-left: 20px
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+
+  &.objectives {
+    background: #eee;
+    background: linear-gradient(#eee, #fff);
+    border: 1px solid #ddd;
+
+    h1 { color: $green; }
+  }
+
+  &.commodities {
+    background: $light-red;
+    color: #fff; 
+    margin-top: 50px;
+
+    h1 { border-bottom: 1px solid $dark-red; }
+
+    p:last-child {
+      background: $dark-red;
+      margin: -20px;
+      padding: 20px;
+      margin-top: 0;
+      padding-top: 10px;
+    }
+  }
+
+  &.sportive-talents {
+    h1 { color: $orange; }
+  }
+
+  &.events {
+    background: $pale-green;
+    background-image: image-url('events.png');
+    background-repeat: no-repeat;
+    color: #fff; 
+    padding-left: 290px;
+
+    @media (max-width: 767px) {
+      padding-left: 5px;
+      background-image: none;
+    }
+  }
+
+  &.divulgation {
+    h1 { color: $blue; }
+  }
+
+  &.environmental-projects {
+    background-image: image-url('environmental_projects.png');
+    background-repeat: no-repeat;
+    padding-left: 130px;
+
+    @media (max-width: 767px) {
+      padding-left: 5px;
+      background-image: none;
+    }
+
+    h1 { color: $pale-green; }
+    text-align: right;
+
+    ul {
+      list-style: none;
+      font-size: 12px;
+      li { font-weight: bold; }
+    }
+  }
+
+  &.contact {
+    h1 { color: $orange; }
+
+    dd { margin-left: 10px; }
+
+    .media { margin-bottom: 10px; }
+    .media-body { margin-top: 45px; }
+  }
+}
+
+nav.sidenav {
+  position: fixed;
+
+  @media (max-width: 767px) {
+    position: static;
+    top: 0;
+    width: auto;
+  }
+
+  ul {
+    background: #fff;
+
+    li {
+      border-bottom: 1px solid #eee;
+
+      &:last-child { border: none; }
+
+      a {
+        font-size: 13px;
+        padding: 5px 15px;
+      }
+
+      &.active {
+        a {
+          color: #666;
+          border-left: 5px solid;
+          padding-left: 10px;
+        }
+
+        @for $i from 1 through length($contents) {
+          &.#{nth($contents, $i)} > a {
+            border-left-color: nth($colors, $i);
+          }
+        }
+      }
+    }
+  }
+}
